@@ -140,17 +140,31 @@
     letter-spacing: 0.05em;
   }
 
-  .back-link {
-    display: inline-block;
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 2rem;
-    font-size: 0.8rem;
+    max-width: var(--read-w);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.75rem;
+    color: var(--grey);
+  }
+
+  .post-nav a {
     color: var(--grey);
     text-decoration: none;
     cursor: pointer;
     letter-spacing: 0.03em;
   }
 
-  .back-link:hover { color: var(--accent); }
+  .post-nav a:hover { color: var(--accent); }
+
+  .post-nav .nav-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
 
   /* ── Bilingual Layout ── */
   .bilingual {
@@ -285,7 +299,7 @@
 
 <!-- Post View -->
 <article class="post-view" id="postView">
-  <a class="back-link" onclick="showList()">← 목록</a>
+  <div class="post-nav" id="postNav"></div>
   <div class="post-header" id="postHeader"></div>
   <div class="bilingual" id="bilingualContent"></div>
 </article>
@@ -362,6 +376,8 @@ function paragraphs(text) {
   return text.trim().split('\n\n').map(p => {
     p = p.trim();
     if (!p) return '';
+    // Skip horizontal rules
+    if (p === '---' || p === '- - -') return '';
     // Image
     const imgMatch = p.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
     if (imgMatch) {
@@ -393,11 +409,25 @@ function showPost(id) {
     .then(post => {
       currentPost = post;
       renderPost(post);
+      renderNav(id);
       document.getElementById('listView').style.display = 'none';
       document.getElementById('postView').style.display = 'block';
       document.getElementById('controls').style.display = 'flex';
       window.scrollTo(0, 0);
     });
+}
+
+function renderNav(currentId) {
+  const visible = POSTS.filter(p => p.visible);
+  const idx = visible.findIndex(p => p.id === currentId);
+  const prev = idx > 0 ? visible[idx - 1] : null;
+  const next = idx < visible.length - 1 ? visible[idx + 1] : null;
+
+  document.getElementById('postNav').innerHTML = `
+    ${prev ? `<a onclick="showPost('${prev.id}')">← prev</a>` : '<span></span>'}
+    <a onclick="showList()">index</a>
+    ${next ? `<a onclick="showPost('${next.id}')">next →</a>` : '<span></span>'}
+  `;
 }
 
 // ── Layout Toggle ──
