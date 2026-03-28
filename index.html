@@ -39,28 +39,17 @@
     align-items: flex-end;
   }
 
-  .site-brand {
-    cursor: pointer;
-  }
-
   .site-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: lowercase;
+    cursor: pointer;
     color: var(--black);
-    line-height: 1;
+    text-decoration: none;
   }
 
-  .site-brand:hover .site-title { color: var(--accent); }
-
-  .site-author {
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: var(--grey);
-    margin-top: 0.25rem;
-  }
+  .site-title:hover { color: var(--accent); }
 
   .header-nav {
     font-size: 0.75rem;
@@ -285,10 +274,7 @@
 <body>
 
 <header>
-  <div class="site-brand" onclick="showList()">
-    <div class="site-title">words</div>
-    <div class="site-author">of peter</div>
-  </div>
+  <a class="site-title" onclick="showList()">words.of.peter.</a>
   <span class="header-nav">피터공의 글</span>
 </header>
 
