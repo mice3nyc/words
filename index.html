@@ -412,7 +412,6 @@ function paragraphs(text) {
     // Inline bold + images within text
     p = p.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
     p = p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    p = p.replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>');
     p = p.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
     return `<p>${p}</p>`;
   }).join('');
