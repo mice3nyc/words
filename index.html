@@ -220,39 +220,25 @@
   }
 
   .ctrl-btn {
-    height: 32px;
-    padding: 0 0.7rem;
-    border: 1.5px solid var(--light);
-    border-radius: 16px;
-    background: var(--bg);
+    height: 28px;
+    padding: 0 0.65rem;
+    border: none;
+    border-radius: 14px;
+    background: var(--grey);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
     font-family: var(--font);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 500;
-    color: var(--grey);
+    color: #fff;
     letter-spacing: 0.05em;
   }
 
   .ctrl-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .ctrl-btn svg {
-    width: 14px;
-    height: 14px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.5;
-    transition: all 0.2s;
-  }
-
-  .ctrl-btn.is-vertical svg {
-    transform: rotate(90deg);
+    background: var(--accent);
   }
 
   /* ── Footer ── */
@@ -306,10 +292,7 @@
     <span id="langLabel">ko → en</span>
   </button>
   <button class="ctrl-btn" id="flipBtn" title="레이아웃 전환" onclick="toggleLayout()">
-    <svg viewBox="0 0 24 24">
-      <line x1="3" y1="12" x2="21" y2="12"/>
-      <line x1="12" y1="3" x2="12" y2="21"/>
-    </svg>
+    <span id="flipLabel">↔</span>
   </button>
 </div>
 
@@ -528,17 +511,15 @@ function toggleLang() {
 
 function updateLayout() {
   const el = document.getElementById('bilingualContent');
-  const flipBtn = document.getElementById('flipBtn');
+  const flipLabel = document.getElementById('flipLabel');
   const langLabel = document.getElementById('langLabel');
 
   if (isVertical) {
     el.classList.add('vertical');
-    flipBtn.classList.add('is-vertical');
-    flipBtn.title = '좌우 배치로 전환';
+    flipLabel.textContent = '↕';
   } else {
     el.classList.remove('vertical');
-    flipBtn.classList.remove('is-vertical');
-    flipBtn.title = '상하 배치로 전환';
+    flipLabel.textContent = '↔';
   }
 
   if (isEnFirst) {
