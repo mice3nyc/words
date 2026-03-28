@@ -204,42 +204,54 @@
     font-weight: 500;
   }
 
-  /* ── Flip Button ── */
-  .flip-btn {
+  /* ── Language Order ── */
+  .bilingual.en-first .col-kr { order: 2; }
+  .bilingual.en-first .col-en { order: 1; }
+
+  /* ── Control Buttons ── */
+  .controls {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 40px;
-    height: 40px;
-    border: 1.5px solid var(--light);
-    border-radius: 50%;
-    background: var(--bg);
-    cursor: pointer;
     display: none;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
+    flex-direction: column;
+    gap: 0.5rem;
     z-index: 100;
   }
 
-  .flip-btn:hover {
-    border-color: var(--accent);
+  .ctrl-btn {
+    height: 32px;
+    padding: 0 0.7rem;
+    border: 1.5px solid var(--light);
+    border-radius: 16px;
+    background: var(--bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-family: var(--font);
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--grey);
+    letter-spacing: 0.05em;
   }
 
-  .flip-btn svg {
-    width: 16px;
-    height: 16px;
-    stroke: var(--grey);
+  .ctrl-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .ctrl-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
     fill: none;
     stroke-width: 1.5;
     transition: all 0.2s;
   }
 
-  .flip-btn:hover svg {
-    stroke: var(--accent);
-  }
-
-  .flip-btn.is-vertical svg {
+  .ctrl-btn.is-vertical svg {
     transform: rotate(90deg);
   }
 
@@ -288,13 +300,18 @@
   <div class="bilingual" id="bilingualContent"></div>
 </article>
 
-<!-- Flip Button -->
-<button class="flip-btn" id="flipBtn" title="레이아웃 전환" onclick="toggleLayout()">
-  <svg viewBox="0 0 24 24">
-    <line x1="3" y1="12" x2="21" y2="12"/>
-    <line x1="12" y1="3" x2="12" y2="21"/>
-  </svg>
-</button>
+<!-- Controls -->
+<div class="controls" id="controls">
+  <button class="ctrl-btn" id="langBtn" title="언어 순서 전환" onclick="toggleLang()">
+    <span id="langLabel">ko → en</span>
+  </button>
+  <button class="ctrl-btn" id="flipBtn" title="레이아웃 전환" onclick="toggleLayout()">
+    <svg viewBox="0 0 24 24">
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="12" y1="3" x2="12" y2="21"/>
+    </svg>
+  </button>
+</div>
 
 <footer>words of peter — 피터공의 글</footer>
 
@@ -425,6 +442,7 @@ In the end, if anyone can do it — then who you are is what matters.`
 
 // ── State ──
 let isVertical = window.innerWidth <= 768;
+let isEnFirst = false;
 let currentPost = null;
 
 // ── Render ──
@@ -481,7 +499,7 @@ function paragraphs(text) {
 function showList() {
   document.getElementById('listView').style.display = 'block';
   document.getElementById('postView').style.display = 'none';
-  document.getElementById('flipBtn').style.display = 'none';
+  document.getElementById('controls').style.display = 'none';
   currentPost = null;
   window.scrollTo(0, 0);
 }
@@ -493,7 +511,7 @@ function showPost(id) {
   renderPost(post);
   document.getElementById('listView').style.display = 'none';
   document.getElementById('postView').style.display = 'block';
-  document.getElementById('flipBtn').style.display = 'flex';
+  document.getElementById('controls').style.display = 'flex';
   window.scrollTo(0, 0);
 }
 
@@ -503,17 +521,32 @@ function toggleLayout() {
   updateLayout();
 }
 
+function toggleLang() {
+  isEnFirst = !isEnFirst;
+  updateLayout();
+}
+
 function updateLayout() {
   const el = document.getElementById('bilingualContent');
-  const btn = document.getElementById('flipBtn');
+  const flipBtn = document.getElementById('flipBtn');
+  const langLabel = document.getElementById('langLabel');
+
   if (isVertical) {
     el.classList.add('vertical');
-    btn.classList.add('is-vertical');
-    btn.title = '좌우 배치로 전환';
+    flipBtn.classList.add('is-vertical');
+    flipBtn.title = '좌우 배치로 전환';
   } else {
     el.classList.remove('vertical');
-    btn.classList.remove('is-vertical');
-    btn.title = '상하 배치로 전환';
+    flipBtn.classList.remove('is-vertical');
+    flipBtn.title = '상하 배치로 전환';
+  }
+
+  if (isEnFirst) {
+    el.classList.add('en-first');
+    langLabel.textContent = 'en → ko';
+  } else {
+    el.classList.remove('en-first');
+    langLabel.textContent = 'ko → en';
   }
 }
 
