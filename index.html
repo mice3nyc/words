@@ -36,23 +36,34 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
+  }
+
+  .site-brand {
+    cursor: pointer;
   }
 
   .site-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: lowercase;
-    cursor: pointer;
     color: var(--black);
-    text-decoration: none;
+    line-height: 1;
   }
 
-  .site-title:hover { color: var(--accent); }
+  .site-brand:hover .site-title { color: var(--accent); }
+
+  .site-author {
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--grey);
+    margin-top: 0.25rem;
+  }
 
   .header-nav {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--grey);
     letter-spacing: 0.05em;
   }
@@ -79,6 +90,13 @@
     font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.4;
+    margin-bottom: 0.2rem;
+  }
+
+  .post-title-en {
+    font-size: 0.8rem;
+    color: var(--grey);
+    font-weight: 400;
     margin-bottom: 0.3rem;
   }
 
@@ -111,7 +129,14 @@
     font-size: 1.6rem;
     font-weight: 600;
     line-height: 1.35;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .post-header .title-en {
+    font-size: 0.95rem;
+    color: var(--grey);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
   }
 
   .post-header .subtitle {
@@ -260,7 +285,10 @@
 <body>
 
 <header>
-  <a class="site-title" onclick="showList()">words</a>
+  <div class="site-brand" onclick="showList()">
+    <div class="site-title">words</div>
+    <div class="site-author">of peter</div>
+  </div>
   <span class="header-nav">피터공의 글</span>
 </header>
 
@@ -282,7 +310,7 @@
   </svg>
 </button>
 
-<footer>words — Matter of Peter on Play</footer>
+<footer>words of peter — 피터공의 글</footer>
 
 <script>
 // ── Data ──
@@ -290,6 +318,7 @@ const POSTS = [
   {
     id: "001",
     title: "문구록:연필.",
+    title_en: "Stationery Notes: Pencil.",
     subtitle: "文具論 01. 연필에 대해 기록하다 (2016)",
     date: "2016-05-05",
     visible: true,
@@ -375,6 +404,7 @@ Since we're on the topic, next time let's talk about pencil sharpeners.`
   {
     id: "002",
     title: "누구나 할 수 있다면, 누구인가가 중요하다.",
+    title_en: "If Anyone Can Do It, Then Who You Are Is What Matters.",
     subtitle: "",
     date: "2023-06-27",
     visible: true,
@@ -414,11 +444,12 @@ let currentPost = null;
 // ── Render ──
 function renderList() {
   const el = document.getElementById('listView');
-  const visible = POSTS.filter(p => p.visible);
+  const visible = POSTS.filter(p => p.visible)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
   el.innerHTML = visible.map(p => `
     <div class="post-item" onclick="showPost('${p.id}')">
       <div class="post-title">${p.title}</div>
-      ${p.subtitle ? `<div class="post-subtitle">${p.subtitle}</div>` : ''}
+      ${p.title_en ? `<div class="post-title-en">${p.title_en}</div>` : ''}
       <div class="post-date">${p.date}</div>
     </div>
   `).join('');
@@ -427,6 +458,7 @@ function renderList() {
 function renderPost(post) {
   document.getElementById('postHeader').innerHTML = `
     <h2>${post.title}</h2>
+    ${post.title_en ? `<div class="title-en">${post.title_en}</div>` : ''}
     ${post.subtitle ? `<div class="subtitle">${post.subtitle}</div>` : ''}
     <div class="date">${post.date}</div>
   `;
