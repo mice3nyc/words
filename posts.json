@@ -1,0 +1,242 @@
+[
+  {
+    "id": "017",
+    "title": "The Burnt City, 그 후",
+    "title_en": "The Burnt City, Afterward",
+    "subtitle": "",
+    "date": "Sep 24. 2023",
+    "visible": true
+  },
+  {
+    "id": "020",
+    "title": "10년전 내가 말했다고 한다",
+    "title_en": "Apparently, I Said This Ten Years Ago",
+    "subtitle": "지금의 나 그리고 기억되는 10년 전의 나",
+    "date": "Nov 12. 2023",
+    "visible": true
+  },
+  {
+    "id": "005",
+    "title": "리움 미술관",
+    "title_en": "Leeum Museum of Art",
+    "subtitle": "",
+    "date": "Jul 3. 2022",
+    "visible": true
+  },
+  {
+    "id": "013",
+    "title": "카페, 앤트러사이트 서교",
+    "title_en": "Cafe, Anthracite Seogyo",
+    "subtitle": "그 카페",
+    "date": "Jul 24. 2023",
+    "visible": true
+  },
+  {
+    "id": "011",
+    "title": "당신 아이의 미래는?15분 후에 알려드립니다!",
+    "title_en": "Your Child's Future? We'll Tell You in 15 Minutes!",
+    "subtitle": "우리를 믿음에 들게 하는 그 어떤 것들에 대하여",
+    "date": "Feb 9. 2024",
+    "visible": true
+  },
+  {
+    "id": "015",
+    "title": "누구나 할 수 있다면, 누구인가가 중요하다.",
+    "title_en": "If Anyone Can Do It, Who You Are Matters",
+    "subtitle": "기술에 의해 진입 장벽이 낮아지면서 동시에 높아지는 상황이다.",
+    "date": "Aug 6. 2023",
+    "visible": true
+  },
+  {
+    "id": "033",
+    "title": "사랑愛에마음心이 없어도 사랑爱이라 읽는다",
+    "title_en": "Love (爱) Without Heart (心) Is Still Read as Love",
+    "subtitle": "",
+    "date": "2026-02-21",
+    "visible": true
+  },
+  {
+    "id": "032",
+    "title": "끝없이 갈라지며 이어지는 무한한 노트의 숲",
+    "title_en": "An Infinite Forest of Notes, Endlessly Branching and Connecting",
+    "subtitle": "",
+    "date": "2026-02-11",
+    "visible": true
+  },
+  {
+    "id": "031",
+    "title": "AI는 답이 아니라 과정이다",
+    "title_en": "AI Is Not the Answer, It's the Process",
+    "subtitle": "교육의 새로운 교실",
+    "date": "2025-08-23",
+    "visible": true
+  },
+  {
+    "id": "029",
+    "title": "진지한 목적을 담으면, 게임의 재미가 사라지나?",
+    "title_en": "Does Serious Purpose Kill the Fun in Games?",
+    "subtitle": "재미 없는 게임은 게임이 아니다",
+    "date": "2025-08-16",
+    "visible": true
+  },
+  {
+    "id": "030",
+    "title": "'GPT가 그랬어요!'",
+    "title_en": "'GPT Told Me So!'",
+    "subtitle": "왜 많은 사람들이 AI의 말에 확신을 갖게 되었을까?",
+    "date": "2025-08-16",
+    "visible": true
+  },
+  {
+    "id": "028",
+    "title": "어딘가, 여기 아래, 어느 정도...",
+    "title_en": "Somewhere, Here Below, Somewhat...",
+    "subtitle": "크리스 로 더 윌로",
+    "date": "2024-06-22",
+    "visible": true
+  },
+  {
+    "id": "027",
+    "title": "날개에 홀리다. Be Spellbound.",
+    "title_en": "Spellbound by Nalgae",
+    "subtitle": "OKNP 부산, 안상수 개인전 <홀려라>",
+    "date": "2024-06-09",
+    "visible": true
+  },
+  {
+    "id": "023",
+    "title": "시간.문자.기호.기록.기억.",
+    "title_en": "Time. Text. Symbol. Record. Memory.",
+    "subtitle": "스크롤의 기록",
+    "date": "2024-06-01",
+    "visible": true
+  },
+  {
+    "id": "026",
+    "title": "디지털은 아날로그 세상을 꿈꾸는가",
+    "title_en": "Does Digital Dream of an Analog World?",
+    "subtitle": "가속화하는 AI 기술 발전 시대의 문화와 교육에 대한 생각",
+    "date": "2024-05-27",
+    "visible": true
+  },
+  {
+    "id": "025",
+    "title": "유리알 유희에 관한 삼승의 기록 1",
+    "title_en": "The Three Seungs' Record of The Glass Bead Game, Part 1",
+    "subtitle": "끝없이 갈라지는 샛길에 관한 유희의 기록",
+    "date": "2024-03-21",
+    "visible": true
+  },
+  {
+    "id": "022",
+    "title": "그 도시에서 만난 무라카미 하루키",
+    "title_en": "The Murakami Haruki I Met in That City",
+    "subtitle": "처음 읽은 무라카미 하루키: 도시와 그 불확실한 벽",
+    "date": "2024-02-18",
+    "visible": true
+  },
+  {
+    "id": "024",
+    "title": "시지프스의 돌",
+    "title_en": "The Stone of Sisyphus",
+    "subtitle": "시지프스는 미술관에서 유튜브에서 카뮈로 이어진다.",
+    "date": "2024-02-15",
+    "visible": true
+  },
+  {
+    "id": "012",
+    "title": "사각 사각 서걱 서걱소리일까? 느낌일까?",
+    "title_en": "Scratch Scratch, Scritch Scritch, Sound or Sensation?",
+    "subtitle": "아버지, 면도, 기억, 추억",
+    "date": "2024-02-09",
+    "visible": true
+  },
+  {
+    "id": "021",
+    "title": "아이는 자란다",
+    "title_en": "Children Grow",
+    "subtitle": "스스로 자랄수 있는 기회를 만들고 응원하는 것이 부모의 역할인것 같다",
+    "date": "2023-12-02",
+    "visible": true
+  },
+  {
+    "id": "019",
+    "title": "무성 영화, \\\"백년 여행기",
+    "title_en": "A Silent Film: A Hundred-Year Journey",
+    "subtitle": "《MMCA 현대차 시리즈 2023: 정연두 – 백년 여행기》전시中",
+    "date": "2023-10-07",
+    "visible": true
+  },
+  {
+    "id": "018",
+    "title": "AI, 벗과 함께 유유자적 선비 일상",
+    "title_en": "A Scholar's Leisurely Life with My AI Companion",
+    "subtitle": "질문으로의 프롬프트 보다는 길게 이어지는 대화에 가까운...",
+    "date": "2023-09-24",
+    "visible": true
+  },
+  {
+    "id": "016",
+    "title": "명상에 대한 명상이 아닌 명상을 위한",
+    "title_en": "Not Meditation on Meditation, but For Meditation",
+    "subtitle": "<뉴타입 몸을 위한 명상 기구 전시>의 무대에서",
+    "date": "2023-08-14",
+    "visible": true
+  },
+  {
+    "id": "010",
+    "title": "I see your point",
+    "title_en": "I See Your Point",
+    "subtitle": "",
+    "date": "2023-07-07",
+    "visible": true
+  },
+  {
+    "id": "009",
+    "title": "셰익스피어의 미스테리",
+    "title_en": "The Mystery of Shakespeare",
+    "subtitle": "The Enigma of Shakespear by Borges",
+    "date": "2023-07-03",
+    "visible": true
+  },
+  {
+    "id": "007",
+    "title": "고마워 THANKS BOOKS",
+    "title_en": "Thank You, THANKS BOOKS",
+    "subtitle": "고마워 책방, 고마워요 땡스북스",
+    "date": "2023-01-23",
+    "visible": true
+  },
+  {
+    "id": "006",
+    "title": "만지는 선, 들리는 모양.기억.기록.",
+    "title_en": "Lines You Touch, Shapes You Hear. Memory. Record.",
+    "subtitle": "‘만지는 선, 들리는 모양' 전시에서 감각했던, 몰랐던, 달라졌던 것들",
+    "date": "2022-12-03",
+    "visible": true
+  },
+  {
+    "id": "004",
+    "title": "<양자역학 사용설명서> 독해",
+    "title_en": "Reading 'A User's Guide to Quantum Mechanics'",
+    "subtitle": "뽀개 뽀개 양자역학 사용설명서",
+    "date": "2017-03-18",
+    "visible": true
+  },
+  {
+    "id": "002",
+    "title": "모든 문구에는 존재 이유가 있다",
+    "title_en": "Every Piece of Stationery Has a Reason to Exist",
+    "subtitle": "그렇다고 계획적인건 아니야",
+    "date": "2016-05-15",
+    "visible": true
+  },
+  {
+    "id": "001",
+    "title": "문구록:연필.",
+    "title_en": "Stationery Notes: Pencil.",
+    "subtitle": "文具論 01. 연필에 대해 기록하다 (2016년 3월20일)",
+    "date": "2016-05-05",
+    "visible": true
+  }
+]
