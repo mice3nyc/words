@@ -199,6 +199,26 @@
     display: none;
   }
 
+  .col-kr h2, .col-en h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.3rem;
+  }
+
+  .col-subtitle {
+    font-size: 0.85rem;
+    color: var(--grey);
+    margin-bottom: 0.2rem;
+  }
+
+  .col-date {
+    font-size: 0.7rem;
+    color: var(--grey);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
   .col-kr p, .col-en p {
     margin-bottom: 1.2rem;
   }
@@ -347,23 +367,22 @@ function renderList() {
 }
 
 function renderPost(post) {
-  document.getElementById('postHeader').innerHTML = `
-    <h2>${post.title}</h2>
-    ${post.title_en ? `<div class="title-en">${post.title_en}</div>` : ''}
-    ${post.subtitle ? `<div class="subtitle">${post.subtitle}</div>` : ''}
-    <div class="date">${post.date}</div>
-  `;
+  document.getElementById('postHeader').innerHTML = '';
 
   const krHtml = paragraphs(post.content_kr);
   const enHtml = paragraphs(post.content_en);
 
   document.getElementById('bilingualContent').innerHTML = `
     <div class="col-kr">
-      <div class="lang-label">한국어</div>
+      <h2>${post.title}</h2>
+      ${post.subtitle ? `<div class="col-subtitle">${post.subtitle}</div>` : ''}
+      <div class="col-date">${post.date}</div>
       ${krHtml}
     </div>
     <div class="col-en">
-      <div class="lang-label">English</div>
+      <h2>${post.title_en || post.title}</h2>
+      ${post.subtitle ? `<div class="col-subtitle">${post.subtitle}</div>` : ''}
+      <div class="col-date">${post.date}</div>
       ${enHtml}
     </div>
   `;
