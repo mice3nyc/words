@@ -195,9 +195,12 @@
     color: #444;
   }
 
-  .col-en img {
-    display: none;
-  }
+  /* Images: show in left column only (side-by-side), both in stacked */
+  .col-en img { display: none; }
+  .bilingual.en-first .col-en img { display: block; }
+  .bilingual.en-first .col-kr img { display: none; }
+  .bilingual.vertical .col-en img { display: block; }
+  .bilingual.vertical .col-kr img { display: block; }
 
   .col-kr h2, .col-en h2 {
     font-size: 1.5rem;
@@ -381,7 +384,7 @@ function renderPost(post) {
     </div>
     <div class="col-en">
       <h2>${post.title_en || post.title}</h2>
-      ${post.subtitle ? `<div class="col-subtitle">${post.subtitle}</div>` : ''}
+      ${post.subtitle_en || post.subtitle ? `<div class="col-subtitle">${post.subtitle_en || post.subtitle}</div>` : ''}
       <div class="col-date">${post.date}</div>
       ${enHtml}
     </div>
@@ -409,6 +412,7 @@ function paragraphs(text) {
     // Inline bold + images within text
     p = p.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
     p = p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    p = p.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
     return `<p>${p}</p>`;
   }).join('');
 }
