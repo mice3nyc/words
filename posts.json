@@ -13,7 +13,7 @@
     "title_en": "Apparently, I Said This Ten Years Ago",
     "subtitle": "지금의 나 그리고 기억되는 10년 전의 나",
     "date": "Nov 12. 2023",
-    "visible": true
+    "visible": false
   },
   {
     "id": "005",
@@ -21,7 +21,7 @@
     "title_en": "Leeum Museum of Art",
     "subtitle": "",
     "date": "Jul 3. 2022",
-    "visible": true
+    "visible": false
   },
   {
     "id": "013",
@@ -29,7 +29,7 @@
     "title_en": "Cafe, Anthracite Seogyo",
     "subtitle": "그 카페",
     "date": "Jul 24. 2023",
-    "visible": true
+    "visible": false
   },
   {
     "id": "011",
