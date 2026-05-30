@@ -413,6 +413,8 @@ function paragraphs(text) {
     p = p.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
     p = p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     p = p.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    // Within a single block, line breaks become <br> (poem-style stanzas)
+    p = p.replace(/\n/g, '<br>');
     return `<p>${p}</p>`;
   }).join('');
 }
