@@ -11,10 +11,10 @@
 
   :root {
     --font: 'Paperlogy', 'Pretendard', -apple-system, sans-serif;
-    --black: #111;
-    --grey: #888;
-    --light: #e0e0e0;
-    --accent: #d44;
+    --black: #1100ff;
+    --grey: #1100ff;
+    --light: #1100ff;
+    --accent: #1100ff;
     --bg: #fff;
     --max-w: 1200px;
     --read-w: 640px;
@@ -66,7 +66,7 @@
 
   .post-item {
     padding: 1.5rem 0;
-    border-bottom: 1px solid var(--light);
+    border-bottom: 1px dashed var(--light);
     cursor: pointer;
     transition: opacity 0.15s;
   }
@@ -181,7 +181,7 @@
   }
 
   .bilingual.vertical .col-en {
-    border-top: 1px solid var(--light);
+    border-top: 1px dashed var(--light);
     padding-top: 2rem;
     margin-top: 1rem;
   }
@@ -303,41 +303,137 @@
       max-width: var(--read-w);
     }
     .bilingual .col-en {
-      border-top: 1px solid var(--light);
+      border-top: 1px dashed var(--light);
       padding-top: 2rem;
       margin-top: 1rem;
     }
   }
+
+  /* ===== 뮤지엄 레이아웃 v2: 전체폭 상단바 + 3영역 독립 스크롤 ===== */
+  body { background: #fff; overflow: hidden; }
+
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 100;
+    background: #fff; border-bottom: 1px dashed var(--light);
+    display: flex; align-items: center; gap: 1.5rem; padding: 0 2rem 0 2.2rem;
+  }
+  .topbar .site-title { font-size: 1rem; flex-shrink: 0; }
+  .topbar .top-title {
+    flex: 1; min-width: 0; text-align: center;
+    font-size: 0.95rem; font-weight: 600; color: var(--black);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .topbar .top-right { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+  .top-btn {
+    border: 1px dashed var(--light); background: #fff; border-radius: 13px;
+    padding: 0.25rem 0.65rem; font-size: 0.62rem; color: var(--grey); cursor: pointer;
+    font-family: var(--font); letter-spacing: 0.05em; height: 26px;
+  }
+  .top-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .topbar .post-nav {
+    position: static; display: flex; gap: 0.9rem; margin: 0; padding: 0;
+    max-width: none; font-size: 0.75rem; justify-content: flex-end;
+  }
+
+  .below {
+    position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+    display: grid; grid-template-columns: 240px 1fr;
+  }
+  .sidebar {
+    overflow-y: auto; height: 100%;
+    padding: 2rem 1.8rem 2rem 2.2rem;
+    border-right: 1px dashed var(--light);
+  }
+  .sidebar-nav { display: flex; flex-direction: column; gap: 1rem; }
+  .side-item { font-size: 0.82rem; line-height: 1.4; color: var(--grey); cursor: pointer; transition: color 0.15s; }
+  .side-item:hover { color: var(--black); }
+  .side-item.active { color: var(--black); font-weight: 700; }   /* 선택 글 = 검정 볼드 */
+  .side-item .si-date { display: block; font-size: 0.62rem; color: #1100ff; letter-spacing: 0.05em; margin-top: 0.15rem; }
+
+  .app-main { overflow: hidden; height: 100%; display: flex; flex-direction: column; padding: 0 6rem 0 3rem; }
+  .app-main .list-view { max-width: 560px; overflow-y: auto; height: 100%; padding: 1.8rem 0; margin: 0; }
+  .app-main .post-view { flex: 1; display: flex; flex-direction: column; min-height: 0; max-width: none; margin: 0; padding: 0; }
+  .app-main .bilingual {
+    flex: 1; min-height: 0; max-width: none; margin: 0;
+    grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  .app-main .bilingual .col-kr { overflow-y: auto; height: 100%; padding: 1.8rem 2.5rem 2rem 0; }
+  .app-main .bilingual .col-en { overflow-y: auto; height: 100%; padding: 1.8rem 0 2rem 2.5rem; border-left: 1px dashed var(--light); }
+  .app-main .bilingual .col-kr h2, .app-main .bilingual .col-en h2 { display: none; }  /* 제목은 상단바에 */
+  .col-kr a, .col-en a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+
+  /* 모바일: 상하 적층, 독립 스크롤 해제 */
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .below { position: static; display: block; }
+    .sidebar { display: none; }
+    .app-main { display: block; height: auto; overflow: visible; padding: 70px 1.2rem 3rem; }
+    .app-main .bilingual { display: block; }
+    .app-main .bilingual .col-kr, .app-main .bilingual .col-en { overflow: visible; height: auto; padding: 0; border-left: none; }
+    .app-main .bilingual .col-en { border-top: 1px dashed var(--light); padding-top: 2rem; margin-top: 1rem; }
+  }
+
+  /* 상단바: 컬럼 기준 좌정렬 + 큰 타이틀 + 영문 타이틀 */
+  .topbar { height: 60px; display: grid; grid-template-columns: 240px 1fr; gap: 0; padding: 0; align-items: stretch; }
+  .topbar .site-title { align-self: center; padding-left: 2.2rem; }
+  .top-main { display: flex; align-items: center; gap: 1.5rem; padding: 0 6rem 0 3rem; min-width: 0; }
+  .top-main .top-title { flex: 1; min-width: 0; text-align: left; display: flex; align-items: baseline; gap: 0.6rem; overflow: hidden; }
+  .top-title .tt-kr { font-size: 1.3rem; font-weight: 600; white-space: nowrap; }
+  .top-title .tt-en { font-size: 0.82rem; color: var(--grey); font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .top-main .top-right { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+  .below { top: 60px; }
+
+  /* 본문 크기 1rem 버전 */
+  .col-kr, .col-en { font-size: 1rem; }
+
+  /* 로열블루를 눈에 보이게: 상단 네비 + 사이드바 호버 + 사이트 타이틀 */
+  .topbar .post-nav a { color: var(--accent); }
+  .topbar .post-nav a:hover { color: #1100ff; }      /* 호버 시 더 진한 네이비 */
+  .side-item:hover { color: var(--accent); }          /* 마우스 올린 글 = 파랑 */
+  .topbar .site-title { color: var(--accent); }       /* 사이트 타이틀 파랑 포인트 */
+
+  /* 전체 파랑 통일: 남은 비-파랑 텍스트 마무리 */
+  .col-en { color: #1100ff; }
+  .side-item .si-date { color: #1100ff; }
+  body { color: var(--black); }
+
+  /* 한영 본문 숨틈: 좌우 마진 확대 */
+  .app-main { padding-left: 4rem; padding-right: 7rem; }
+  .app-main .bilingual .col-kr { padding-right: 3.5rem; }
+  .app-main .bilingual .col-en { padding-left: 3.5rem; }
+
+  /* 강조색 #ff2500: 선택된 스토리(현재 글) */
+  .side-item.active { color: #ff2500; }
 </style>
 </head>
 <body>
 
-<header>
+<!-- Top Bar (전체폭 고정) -->
+<div class="topbar">
   <a class="site-title" onclick="showList()">words.of.peter.</a>
-  <span class="header-nav">피터공의 글</span>
-</header>
-
-<!-- List View -->
-<main class="list-view" id="listView"></main>
-
-<!-- Post View -->
-<article class="post-view" id="postView">
-  <div class="post-nav" id="postNav"></div>
-  <div class="post-header" id="postHeader"></div>
-  <div class="bilingual" id="bilingualContent"></div>
-</article>
-
-<!-- Controls -->
-<div class="controls" id="controls">
-  <button class="ctrl-btn" id="langBtn" title="언어 순서 전환" onclick="toggleLang()">
-    <span id="langLabel">ko → en</span>
-  </button>
-  <button class="ctrl-btn" id="flipBtn" title="레이아웃 전환" onclick="toggleLayout()">
-    <span id="flipLabel">↔</span>
-  </button>
+  <div class="top-main">
+    <div class="top-title" id="topTitle"></div>
+    <div class="top-right">
+      <button class="top-btn" id="langBtn" title="언어 순서 전환" onclick="toggleLang()"><span id="langLabel">ko → en</span></button>
+      <button class="top-btn" id="flipBtn" title="레이아웃 전환" onclick="toggleLayout()"><span id="flipLabel">↔</span></button>
+      <div class="post-nav" id="postNav"></div>
+    </div>
+  </div>
 </div>
 
-<footer>words of peter — 피터공의 글</footer>
+<!-- Below: 좌목록 | 본문 -->
+<div class="below">
+  <aside class="sidebar">
+    <nav class="sidebar-nav" id="sidebarNav"></nav>
+  </aside>
+  <main class="app-main">
+    <main class="list-view" id="listView"></main>
+    <article class="post-view" id="postView">
+      <div class="post-header" id="postHeader" style="display:none"></div>
+      <div class="bilingual" id="bilingualContent"></div>
+    </article>
+  </main>
+</div>
 
 <script>
 // ── Data (loaded from JSON) ──
@@ -352,6 +448,9 @@ fetch('posts.json')
   .then(data => {
     POSTS = data.sort((a, b) => new Date(b.date) - new Date(a.date));
     renderList();
+    renderSidebar();
+    const __first = POSTS.filter(p => p.visible)[0];
+    if (__first) showPost(__first.id);
   });
 
 
@@ -369,8 +468,22 @@ function renderList() {
   `).join('');
 }
 
+function renderSidebar(currentId) {
+  const nav = document.getElementById('sidebarNav');
+  if (!nav) return;
+  const visible = POSTS.filter(p => p.visible);
+  nav.innerHTML = visible.map(p => `
+    <div class="side-item ${p.id === currentId ? 'active' : ''}" onclick="showPost('${p.id}')">
+      ${p.title}
+      <span class="si-date">${p.date}</span>
+    </div>
+  `).join('');
+}
+
 function renderPost(post) {
-  document.getElementById('postHeader').innerHTML = '';
+  document.getElementById('topTitle').innerHTML =
+    `<span class="tt-kr">${post.title}</span>` +
+    (post.title_en ? `<span class="tt-en">${post.title_en}</span>` : '');
 
   const krHtml = paragraphs(post.content_kr);
   const enHtml = paragraphs(post.content_en);
@@ -425,6 +538,8 @@ function showList() {
   document.getElementById('postView').style.display = 'none';
   document.getElementById('controls').style.display = 'none';
   currentPost = null;
+  const tt = document.getElementById('topTitle'); if (tt) tt.innerHTML = '';
+  renderSidebar();
   window.scrollTo(0, 0);
 }
 
@@ -435,8 +550,9 @@ function showPost(id) {
       currentPost = post;
       renderPost(post);
       renderNav(id);
+      renderSidebar(id);
       document.getElementById('listView').style.display = 'none';
-      document.getElementById('postView').style.display = 'block';
+      document.getElementById('postView').style.display = 'flex';
       document.getElementById('controls').style.display = 'flex';
       window.scrollTo(0, 0);
     });
