@@ -89,12 +89,22 @@
 - `**bold**` = `<strong>`, `[text](url)` = 링크(새 탭)
 - ⚠️ 콘텐츠 JSON의 공백 컨벤션: 문장 사이 `\n`, 연(stanza) 사이 `\n\n`. 브런치 export 원본은 문장마다 `\n\n`·연 사이 `\n\n\n`이라, 옮길 때 한 단계씩 줄여 정규화한다(033 케이스).
 
-## 포스팅 워크플로우
-1. 피터공: 옵시디언에서 글 완성
-2. 피터공: "올려줘"
-3. 아리공: 마크다운 → JSON 변환 + 번역(필요시) + commit + push
-4. GitHub Pages 자동 반영
+## 소스 오브 트루스 (26.0604 확정)
+- **마스터(편집)**: `_작가노트/_wordsposting/posts/*.md` — 한영 마스터. 피터공이 옵시디언에서 쓰고 고치는 곳.
+  - 파일명: `NNN_제목.md` (숨김글은 `_NNN_제목.md`, `visible: false`와 일치)
+  - 본문: `## 한국어` ... `## English`
+  - frontmatter: title, title_en, subtitle, subtitle_en, date(ISO), visible, brunch_num·keywords(마스터 전용)
+  - 이미지: `_작가노트/_wordsposting/images/`
+- **배포(산출)**: `_dev/words/posts/*.json` + `posts.json` — `build.py`가 마스터에서 생성. 직접 편집 금지.
+- 26.0604 backfill로 마스터=JSON 30/30 정합 맞춤. 이후 마스터가 진실, JSON은 빌드 산출물.
 
-## 콘텐츠 소스
-- `_dev/brunch_backup/` 31편 (brunch_01~33, 결번 03·08·14)
-- 전부 브런치에서 publish 상태였던 글
+## 포스팅 워크플로우
+1. 피터공: 옵시디언 `_wordsposting/posts/`에서 글 작성·수정 (한글만 써도 영문은 아리공이 번역 채움)
+2. 피터공: "올려줘"
+3. 아리공: `cd _dev/words && python3 build.py` (마스터 → JSON + manifest + 이미지 동기화) + QC 체크리스트 + commit + push
+4. GitHub Pages 자동 반영
+- 새 글: manifest(posts.json) 순서는 기존 보존, 새 id는 끝에 append됨 → 빌드 로그 보고 사이드바 위치 수동 재배치
+- 초안: `visible: false`로 두면 사이트에서 숨김 (빌드/배포돼도 목록 비표시)
+
+## 콘텐츠 소스 (원본 import)
+- `_dev/brunch_backup/` 31편 (brunch_01~33, 결번 03·08·14) — 브런치 publish 원본(한글). 최초 import 소스, 편집 대상 아님
